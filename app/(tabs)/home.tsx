@@ -1,17 +1,10 @@
 import { SignedIn, useClerk } from "@clerk/clerk-expo";
-import {
-  ActivityIndicator,
-  Button,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const HomeScreen = () => {
   const { signOut, user } = useClerk();
 
-  function capitalizeFirstLetter(str: string) {
+  function capitalizeFirstLetter(str?: string) {
     if (!str) {
       return "";
     }
@@ -23,30 +16,18 @@ const HomeScreen = () => {
       <SignedIn>
         <View>
           <Text>First name: {user?.firstName}</Text>
-          <Text>Age: {String(user?.unsafeMetadata?.age)}</Text>
+          <Text>Age: {user?.unsafeMetadata?.age}</Text>
           <Text>
-            Gender:{" "}
-            {capitalizeFirstLetter(String(user?.unsafeMetadata?.gender))}
+            Gender: {capitalizeFirstLetter(user?.unsafeMetadata?.gender)}
           </Text>
           <Text>
             Location:{" "}
-            {capitalizeFirstLetter(
-              //   todo: fix types
-              //   @ts-ignore
-              String(user?.unsafeMetadata?.location?.city),
-            )}
-            ,{" "}
-            {capitalizeFirstLetter(
-              //   todo: fix types
-              //   @ts-ignore
-              String(user?.unsafeMetadata?.location?.country),
-            )}
+            {capitalizeFirstLetter(user?.unsafeMetadata?.location?.city)},{" "}
+            {capitalizeFirstLetter(user?.unsafeMetadata?.location?.country)}
           </Text>
           <Text>
             Relationship status:{" "}
-            {capitalizeFirstLetter(
-              String(user?.unsafeMetadata?.relationshipStatus),
-            )}
+            {capitalizeFirstLetter(user?.unsafeMetadata?.relationshipStatus)}
           </Text>
         </View>
         <View style={{ marginTop: 20, width: 100 }}>

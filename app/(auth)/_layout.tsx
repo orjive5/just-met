@@ -5,13 +5,16 @@ export default function RootLayout() {
   const pathName = usePathname();
   const { isSignedIn, user } = useUser();
 
-  if (isSignedIn && user?.unsafeMetadata?.onboardingCompleted !== true) {
+  const onboardingCompleted =
+    user?.unsafeMetadata?.onboardingCompleted === true;
+
+  if (isSignedIn && !onboardingCompleted) {
     if (pathName !== "/onboarding") {
       return <Redirect href="/onboarding" />;
     }
   }
 
-  if (isSignedIn && user?.unsafeMetadata?.onboardingCompleted === true) {
+  if (isSignedIn && onboardingCompleted) {
     return <Redirect href="/(tabs)/home" />;
   }
 

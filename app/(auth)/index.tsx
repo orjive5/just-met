@@ -4,7 +4,6 @@ import * as AuthSession from "expo-auth-session";
 import { isClerkAPIResponseError, useSSO } from "@clerk/clerk-expo";
 import {
   View,
-  Button,
   Text,
   SafeAreaView,
   StyleSheet,
@@ -73,7 +72,7 @@ export default function Index() {
         <View style={styles.headingContainer}>
           <Text style={styles.label}>JustMet</Text>
           <Text style={styles.description}>
-            I ovde nam treba neki slogan i logo
+            New faces. Great conversations.
           </Text>
         </View>
         <View style={{ marginTop: 20, width: 200 }}>

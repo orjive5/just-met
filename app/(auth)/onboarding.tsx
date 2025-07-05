@@ -13,31 +13,38 @@ import { useEffect, useState } from "react";
 import TextInput from "@/components/TextInput";
 import RadioButtonInput from "@/components/RadioButtonInput";
 
+type TOnboardingFormValues = {
+  firstName: string;
+  age: string;
+  gender: string;
+  relationshipStatus: string;
+  location: {
+    country: string;
+    city: string;
+  };
+};
+
 const Onboarding = () => {
   const { user, isLoaded } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
-  type TFormValues = {
-    firstName: string;
-    age: string;
-    gender: string;
-    relationshipStatus: string;
-    location: string;
-  };
+  const { control, handleSubmit, setError, setValue } =
+    useForm<TOnboardingFormValues>({
+      defaultValues: {
+        firstName: "",
+        age: "",
+        gender: "",
+        relationshipStatus: "",
+        location: {
+          country: "",
+          city: "",
+        },
+      },
+    });
 
-  const { control, handleSubmit, setError, setValue } = useForm<TFormValues>({
-    defaultValues: {
-      firstName: "",
-      age: "",
-      gender: "",
-      relationshipStatus: "",
-      location: "",
-    },
-  });
-
-  const onSubmit = async (data: TFormValues) => {
+  const onSubmit = async (data: TOnboardingFormValues) => {
     const { firstName, age, gender, relationshipStatus, location } = data;
 
     try {
@@ -92,7 +99,7 @@ const Onboarding = () => {
     }
 
     if (user?.unsafeMetadata?.location) {
-      setValue("location", String(user?.unsafeMetadata?.locationlocation));
+      setValue("location", user?.unsafeMetadata?.location);
     }
   }, [isLoaded, user]);
 
@@ -106,8 +113,8 @@ const Onboarding = () => {
       <View style={styles.headingContainer}>
         <Text style={styles.label}>Complete your account</Text>
         <Text style={styles.description}>
-          Complete your account to start your journey with thousands of
-          developers around the world.
+          Complete your account and start meeting great people over coffee or
+          drinks.
         </Text>
       </View>
 
