@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ClerkAPIError } from "@clerk/types";
+import { Colors } from "@/theme/colors";
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    backgroundColor: "#fd5564",
+    backgroundColor: `${Colors.main}`,
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
