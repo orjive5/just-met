@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as AuthSession from "expo-auth-session";
 import { isClerkAPIResponseError, useSSO } from "@clerk/clerk-expo";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { ClerkAPIError } from "@clerk/types";
 import { Colors } from "@/theme/colors";
+import { Image } from "expo-image";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { LegalLinks } from "@/modules/auth/components/LegalLinks";
+import { AuthButton } from "@/modules/auth/components/AuthButton";
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -33,8 +31,10 @@ export default function Index() {
   // Use the `useSSO()` hook to access the `startSSOFlow()` method
   const { startSSOFlow } = useSSO();
   const [errors, setErrors] = useState<ClerkAPIError[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSignInWithGoogle = async () => {
+    setIsLoading(true);
     try {
       const { createdSessionId, setActive } = await startSSOFlow({
         strategy: "oauth_google",
@@ -56,39 +56,29 @@ export default function Index() {
       } else {
         console.error(error);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View
-        style={{
-          gap: 20,
-          height: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "white",
-        }}
-      >
+    <SafeAreaView style={styles.container}>
+      <View style={styles.pageContent}>
         <View style={styles.headingContainer}>
-          <Text style={styles.label}>JustMet</Text>
-          <Text style={styles.description}>
-            New faces. Great conversations.
-          </Text>
+          <Image
+            source={require("@/assets/images/logo.png")}
+            style={styles.logo}
+          />
         </View>
-        <View style={{ marginTop: 20, width: 200 }}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={handleSignInWithGoogle}
-          >
-            <Text style={styles.buttonText}>Sign in with Google</Text>
-          </TouchableOpacity>
+        <View style={styles.formContainer}>
+          <AuthButton onPress={handleSignInWithGoogle} isLoading={isLoading} />
+          {errors.map((error) => (
+            <Text style={styles.errorMessage} key={error.code}>
+              {error.message}
+            </Text>
+          ))}
+          <LegalLinks />
         </View>
-        {errors.map((error) => (
-          <Text style={{ color: "red" }} key={error.code}>
-            {error.message}
-          </Text>
-        ))}
       </View>
     </SafeAreaView>
   );
@@ -97,9 +87,16 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    padding: 20,
+    backgroundColor: `${Colors.background}`,
+  },
+  pageContent: {
     gap: 20,
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingTop: 200,
+    paddingBottom: 40,
+    paddingInline: 40,
   },
   headingContainer: {
     width: "100%",
@@ -107,25 +104,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  logo: { width: 300, height: 300 },
+  formContainer: {
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 30,
+    width: "100%",
+  },
   label: {
     fontSize: 20,
     fontWeight: "bold",
   },
-  description: {
-    fontSize: 16,
-    color: "gray",
-  },
-  button: {
-    width: "100%",
-    backgroundColor: `${Colors.main}`,
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    gap: 10,
-  },
-  buttonText: {
-    color: "white",
-  },
+  errorMessage: { color: "red", fontSize: 14 },
 });

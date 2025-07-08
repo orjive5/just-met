@@ -22,6 +22,12 @@ export default function RootLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+      <Stack.Screen name="terms-of-service" options={{ headerShown: false }} />
+      <Stack.Screen name="privacy-policy" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="community-guidelines"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 }
