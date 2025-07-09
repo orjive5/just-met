@@ -4,20 +4,18 @@ import { Typography } from "@/components/Typography/Typography";
 import { Colors } from "@/theme/colors";
 import { ErrorMessage } from "@/components/ErrorMessage";
 
-const TextInput = ({
+const NumberInput = ({
   control,
   placeholder,
   required,
   label,
   name,
-  isNumeric,
 }: {
   control: any;
   placeholder: string;
   required?: boolean;
   label: string;
   name: string;
-  isNumeric?: boolean;
 }) => {
   return (
     <Controller
@@ -46,9 +44,9 @@ const TextInput = ({
             ]}
             autoComplete="off"
             autoCapitalize="none"
-            keyboardType={isNumeric ? "numeric" : "default"}
-            inputMode={isNumeric ? "numeric" : "text"}
-            maxLength={isNumeric ? 10 : 256}
+            keyboardType="numeric"
+            inputMode="numeric"
+            maxLength={10}
           />
           {error && (
             <ErrorMessage message={error.message || "An error occurred!"} />
@@ -61,7 +59,7 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+export default NumberInput;
 
 const styles = StyleSheet.create({
   container: {

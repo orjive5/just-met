@@ -1,5 +1,8 @@
 import { Controller } from "react-hook-form";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { Typography } from "@/components/Typography/Typography";
+import { Colors } from "@/theme/colors";
+import { ErrorMessage } from "@/components/ErrorMessage";
 
 const RadioButtonInput = ({
   control,
@@ -31,13 +34,19 @@ const RadioButtonInput = ({
       <TouchableOpacity
         style={[
           styles.option,
-          isSelected && { backgroundColor: "#fd5564", borderColor: "#fd5564" },
+          isSelected && {
+            backgroundColor: `${Colors.brandPrimary}`,
+            borderColor: `${Colors.brandPrimary}`,
+          },
         ]}
         onPress={() => onChange(value)}
       >
-        <Text style={[styles.optionText, isSelected && { color: "white" }]}>
+        <Typography
+          variant="s"
+          color={isSelected ? "textSecondary" : "textPrimary"}
+        >
           {label}
-        </Text>
+        </Typography>
       </TouchableOpacity>
     );
   };
@@ -45,18 +54,17 @@ const RadioButtonInput = ({
   return (
     <Controller
       control={control}
-      render={({
-        field: { onChange, onBlur, value },
-        fieldState: { error },
-      }) => (
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
         <View style={styles.container}>
-          <Text style={styles.label}>
+          <Typography>
             {label}
 
-            {required && <Text style={{ color: "red" }}>*</Text>}
-          </Text>
+            {required && <Typography color="textError">*</Typography>}
+          </Typography>
           {placeholder && (
-            <Text style={{ color: "gray", fontSize: 12 }}>{placeholder}</Text>
+            <Typography variant="s" color="textLight">
+              {placeholder}
+            </Typography>
           )}
           <View style={styles.optionsContainer}>
             {options.map((option) => (
@@ -72,11 +80,15 @@ const RadioButtonInput = ({
               />
             ))}
           </View>
-          {error && <Text style={{ color: "red" }}>{error.message}</Text>}
+          {error && (
+            <ErrorMessage message={error.message || "An error occurred!"} />
+          )}
         </View>
       )}
       name={name}
-      rules={{ required: required && "This field is required !" }}
+      rules={{
+        required: required && "This field is required!",
+      }}
     />
   );
 };
@@ -99,12 +111,9 @@ const styles = StyleSheet.create({
   },
   option: {
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "gray",
+    borderColor: `${Colors.textLight}`,
     borderRadius: 10,
     padding: 7,
     paddingHorizontal: 20,
-  },
-  optionText: {
-    fontSize: 14,
   },
 });

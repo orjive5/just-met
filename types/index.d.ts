@@ -6,7 +6,7 @@ declare global {
     location: {
       country: string;
       city: string;
-    };
+    } | null;
     onboardingCompleted?: boolean;
   }
 }

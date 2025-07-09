@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as AuthSession from "expo-auth-session";
 import { isClerkAPIResponseError, useSSO } from "@clerk/clerk-expo";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ClerkAPIError } from "@clerk/types";
 import { Colors } from "@/theme/colors";
 import { Image } from "expo-image";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LegalLinks } from "@/modules/auth/components/LegalLinks";
 import { AuthButton } from "@/modules/auth/components/AuthButton";
+import { ErrorMessage } from "@/components/ErrorMessage";
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -73,9 +74,7 @@ export default function Index() {
         <View style={styles.formContainer}>
           <AuthButton onPress={handleSignInWithGoogle} isLoading={isLoading} />
           {errors.map((error) => (
-            <Text style={styles.errorMessage} key={error.code}>
-              {error.message}
-            </Text>
+            <ErrorMessage message={error.message} />
           ))}
           <LegalLinks />
         </View>
@@ -116,5 +115,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-  errorMessage: { color: "red", fontSize: 14 },
 });
