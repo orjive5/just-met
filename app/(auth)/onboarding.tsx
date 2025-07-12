@@ -18,8 +18,10 @@ import RadioButtonInput from "@/components/RadioButtonInput";
 import { Colors } from "@/theme/colors";
 import { Typography } from "@/components/Typography/Typography";
 import NumberInput from "@/components/NumberInput";
+import ImageInput from "@/components/ImageInput";
 
 type TOnboardingFormValues = {
+  profileImage: string;
   firstName: string;
   age: string;
   gender: string;
@@ -36,6 +38,7 @@ const Onboarding = () => {
   const { control, handleSubmit, setError, setValue } =
     useForm<TOnboardingFormValues>({
       defaultValues: {
+        profileImage: "",
         firstName: "",
         age: "",
         gender: "",
@@ -45,7 +48,14 @@ const Onboarding = () => {
     });
 
   const onSubmit = async (data: TOnboardingFormValues) => {
-    const { firstName, age, gender, relationshipStatus, location } = data;
+    const {
+      profileImage,
+      firstName,
+      age,
+      gender,
+      relationshipStatus,
+      location,
+    } = data;
 
     try {
       setIsLoading(true);
@@ -58,6 +68,10 @@ const Onboarding = () => {
           location,
           onboardingCompleted: true,
         },
+      });
+
+      await user?.setProfileImage({
+        file: profileImage,
       });
 
       await user?.reload();
@@ -151,6 +165,13 @@ const Onboarding = () => {
             ]}
           />
 
+          <ImageInput
+            control={control}
+            label="Upload your profile image"
+            name="profileImage"
+            required
+          />
+
           <RadioButtonInput
             control={control}
             placeholder="What is your relationship status?"
@@ -207,7 +228,7 @@ export default Onboarding;
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: `${Colors.background}`,
   },
   container: {
     gap: 20,

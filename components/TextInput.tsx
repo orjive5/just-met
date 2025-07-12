@@ -10,14 +10,12 @@ const TextInput = ({
   required,
   label,
   name,
-  isNumeric,
 }: {
   control: any;
   placeholder: string;
   required?: boolean;
   label: string;
   name: string;
-  isNumeric?: boolean;
 }) => {
   return (
     <Controller
@@ -46,9 +44,6 @@ const TextInput = ({
             ]}
             autoComplete="off"
             autoCapitalize="none"
-            keyboardType={isNumeric ? "numeric" : "default"}
-            inputMode={isNumeric ? "numeric" : "text"}
-            maxLength={isNumeric ? 10 : 256}
           />
           {error && (
             <ErrorMessage message={error.message || "An error occurred!"} />
