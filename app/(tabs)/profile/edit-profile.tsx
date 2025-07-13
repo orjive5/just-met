@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function ChatScreen() {
+export default function EditProfileScreen() {
   return (
     <View
       style={{
@@ -9,7 +9,7 @@ export default function ChatScreen() {
         alignItems: "center",
       }}
     >
-      <Text>Chat</Text>
+      <Text>Edit Profile Screen</Text>
     </View>
   );
 }
