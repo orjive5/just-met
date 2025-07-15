@@ -73,9 +73,13 @@ const RadioButtonInput = ({
                 label={option.label}
                 value={option.value}
                 onChange={onChange}
+                // todo: refactor
                 isSelected={
-                  value === option.value ||
-                  JSON.stringify(value) === JSON.stringify(option.value)
+                  (typeof value === "string" && value === option.value) ||
+                  (typeof value === "object" &&
+                    typeof option.value === "object" &&
+                    value?.country === option.value?.country &&
+                    value?.city === option.value?.city)
                 }
               />
             ))}

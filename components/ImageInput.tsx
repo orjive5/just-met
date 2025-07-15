@@ -13,11 +13,17 @@ const ImageInput = ({
   required,
   label,
   name,
+  showUploaded = true,
+  withLabel = true,
+  buttonText = "Pick an Image",
 }: {
   control: any;
   required?: boolean;
-  label: string;
+  label?: string;
   name: string;
+  showUploaded?: boolean;
+  withLabel?: boolean;
+  buttonText?: string;
 }) => {
   return (
     <Controller
@@ -46,10 +52,12 @@ const ImageInput = ({
 
         return (
           <View style={styles.container}>
-            <Typography>
-              {label}
-              {required && <Typography color="textError">*</Typography>}
-            </Typography>
+            {withLabel && (
+              <Typography>
+                {label}
+                {required && <Typography color="textError">*</Typography>}
+              </Typography>
+            )}
 
             <View>
               <TouchableOpacity style={styles.button} onPress={pickImageAsync}>
@@ -59,12 +67,12 @@ const ImageInput = ({
                     size={24}
                     color={Colors.textPrimary}
                   />
-                  <Typography>Pick an Image</Typography>
+                  <Typography>{buttonText}</Typography>
                 </>
               </TouchableOpacity>
             </View>
 
-            {value && (
+            {value && showUploaded && (
               <Image
                 alt="Selected image"
                 source={value}
