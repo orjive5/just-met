@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Typography } from "@/components/Typography/Typography";
 import { Colors } from "@/theme/colors";
 import { ErrorMessage } from "@/components/ErrorMessage";
@@ -7,6 +7,8 @@ import * as ImagePicker from "expo-image-picker";
 import { Image } from "expo-image";
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Button } from "@/components/Button/Button";
+import { ButtonVariant } from "@/components/Button/types";
 
 const ImageInput = ({
   control,
@@ -60,16 +62,18 @@ const ImageInput = ({
             )}
 
             <View>
-              <TouchableOpacity style={styles.button} onPress={pickImageAsync}>
-                <>
+              <Button
+                label={buttonText}
+                onPress={pickImageAsync}
+                variant={ButtonVariant.MINIMAL}
+                icon={
                   <Ionicons
                     name="image-outline"
                     size={24}
                     color={Colors.textPrimary}
                   />
-                  <Typography>{buttonText}</Typography>
-                </>
-              </TouchableOpacity>
+                }
+              />
             </View>
 
             {value && showUploaded && (
@@ -103,17 +107,5 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     gap: 5,
-  },
-  button: {
-    width: "100%",
-    height: 50,
-    padding: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "gray",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    gap: 10,
   },
 });

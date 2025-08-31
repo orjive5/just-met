@@ -141,7 +141,6 @@ const EditProfileScreen = () => {
           <ImageInput
             control={control}
             name="profileImage"
-            required
             showUploaded={false}
             withLabel={false}
             buttonText="Change Image"

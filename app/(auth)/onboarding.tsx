@@ -1,10 +1,4 @@
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import {
   SafeAreaView,
   useSafeAreaInsets,
@@ -12,13 +6,15 @@ import {
 import { useForm } from "react-hook-form";
 import { useRouter } from "expo-router";
 import { useUser } from "@clerk/clerk-expo";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextInput from "@/components/TextInput";
 import RadioButtonInput from "@/components/RadioButtonInput";
 import { Colors } from "@/theme/colors";
 import { Typography } from "@/components/Typography/Typography";
 import NumberInput from "@/components/NumberInput";
 import ImageInput from "@/components/ImageInput";
+import { Button } from "@/components/Button/Button";
+import { ButtonVariant } from "@/components/Button/types";
 
 type TOnboardingFormValues = {
   profileImage: string;
@@ -204,18 +200,13 @@ const Onboarding = () => {
           />
 
           <View style={{ marginTop: 20 }}>
-            <TouchableOpacity
-              style={[styles.button, { opacity: isLoading ? 0.7 : 1 }]}
+            <Button
+              label="Complete Account"
               onPress={handleSubmit(onSubmit)}
+              isLoading={isLoading}
+              variant={ButtonVariant.FILLED}
               disabled={isLoading}
-            >
-              {isLoading ? (
-                <ActivityIndicator size="small" color="white" />
-              ) : null}
-              <Typography variant="button" color="textSecondary">
-                {isLoading ? "Loading..." : "Complete Account"}
-              </Typography>
-            </TouchableOpacity>
+            />
           </View>
         </View>
       </ScrollView>

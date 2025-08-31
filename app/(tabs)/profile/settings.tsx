@@ -1,18 +1,28 @@
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useClerk } from "@clerk/clerk-expo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/theme/colors";
-import { Typography } from "@/components/Typography/Typography";
 import React from "react";
+import { Button } from "@/components/Button/Button";
+import { ButtonVariant } from "@/components/Button/types";
 
 export default function SettingsScreen() {
   const { signOut } = useClerk();
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => signOut()}>
-        <Ionicons name="log-out-outline" size={24} color={Colors.textPrimary} />
-        <Typography>Sign Out</Typography>
-      </TouchableOpacity>
+      <Button
+        label="Sign Out"
+        onPress={signOut}
+        icon={
+          <Ionicons
+            name="log-out-outline"
+            size={24}
+            color={Colors.textPrimary}
+          />
+        }
+        variant={ButtonVariant.MINIMAL}
+        fullWidth={false}
+      />
     </View>
   );
 }
@@ -23,17 +33,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: `${Colors.background}`,
-  },
-  button: {
-    height: 50,
-    padding: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "gray",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    gap: 10,
-    marginTop: 10,
   },
 });

@@ -8,8 +8,8 @@ import { Colors } from "@/theme/colors";
 import { Image } from "expo-image";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LegalLinks } from "@/modules/auth/components/LegalLinks";
-import { AuthButton } from "@/modules/auth/components/AuthButton";
 import { ErrorMessage } from "@/components/ErrorMessage";
+import { Button } from "@/components/Button/Button";
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -72,7 +72,19 @@ export default function Index() {
           />
         </View>
         <View style={styles.formContainer}>
-          <AuthButton onPress={handleSignInWithGoogle} isLoading={isLoading} />
+          <Button
+            label="Continue with Google"
+            onPress={handleSignInWithGoogle}
+            isLoading={isLoading}
+            icon={
+              <Image
+                source={require("@/assets/images/googleLogo.png")}
+                contentFit="contain"
+                style={{ width: 32, height: 32 }}
+              />
+            }
+            disabled={isLoading}
+          />
           {errors.map((error) => (
             <ErrorMessage message={error.message} />
           ))}

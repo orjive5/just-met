@@ -4,7 +4,7 @@ export const Colors = {
   brandTertiary: "#D82900",
   darkPrimary: "#424242",
   darkSecondary: "#000932",
-  background: "#FFF4EB",
+  background: "#fff7f1",
   textPrimary: "black",
   textSecondary: "white",
   textLight: "gray",

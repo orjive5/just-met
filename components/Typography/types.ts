@@ -15,7 +15,8 @@ type TypographyColor =
   | "textPrimary"
   | "textSecondary"
   | "textLight"
-  | "textError";
+  | "textError"
+  | "brandPrimary";
 
 export interface TypographyProps extends TextProps {
   variant?: TypographyVariant;

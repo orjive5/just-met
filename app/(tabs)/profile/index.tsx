@@ -1,10 +1,12 @@
 import { SignedIn, useClerk } from "@clerk/clerk-expo";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Typography } from "@/components/Typography/Typography";
 import { useRouter } from "expo-router";
 import { Image } from "expo-image";
 import { Colors } from "@/theme/colors";
 import React from "react";
+import { Button } from "@/components/Button/Button";
+import { ButtonVariant } from "@/components/Button/types";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const ProfileScreen = () => {
@@ -87,17 +89,21 @@ const ProfileScreen = () => {
             </Typography>
           </View>
         </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => router.push("/(tabs)/profile/edit-profile")}
-        >
-          <Ionicons
-            name="create-outline"
-            size={24}
-            color={Colors.textPrimary}
+        <View style={{ marginTop: 10 }}>
+          <Button
+            label="Edit Profile"
+            onPress={() => router.push("/(tabs)/profile/edit-profile")}
+            fullWidth={false}
+            variant={ButtonVariant.MINIMAL}
+            icon={
+              <Ionicons
+                name="create-outline"
+                size={24}
+                color={Colors.textPrimary}
+              />
+            }
           />
-          <Typography>Edit Profile</Typography>
-        </TouchableOpacity>
+        </View>
       </SignedIn>
     </View>
   );
@@ -111,17 +117,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: `${Colors.background}`,
-  },
-  button: {
-    height: 50,
-    padding: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "gray",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    gap: 10,
-    marginTop: 10,
   },
 });
