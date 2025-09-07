@@ -35,9 +35,17 @@ export default function RootLayout() {
         name="notifications"
         options={{
           title: "Notifications",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size, focused }) => (
             <Ionicons name="notifications" size={size} color={color} />
           ),
+          // todo: add notifications count
+          // tabBarBadge: 3,
+          // tabBarBadgeStyle: {
+          //   backgroundColor: "white",
+          //   color: `${Colors.brandPrimary}`,
+          //   borderColor: `${Colors.brandPrimary}`,
+          //   borderWidth: 1,
+          // },
         }}
       />
       <Tabs.Screen

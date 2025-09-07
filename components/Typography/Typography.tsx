@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text, StyleSheet, TextProps } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { Colors } from "@/theme/colors";
 import { TypographyProps } from "@/components/Typography/types";
 
@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
   },
   l: {
     fontSize: 18,
+  },
+  mBold: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
   m: {
     fontSize: 16,

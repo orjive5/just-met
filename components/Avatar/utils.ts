@@ -14,7 +14,11 @@ export const getBorderColor = (value: TAvatarType) => {
 };
 
 export const getTitleSize = (value: AvatarSize) => {
-  if (value === AvatarSize.small || value === AvatarSize.medium) {
+  if (
+    value === AvatarSize.extraSmall ||
+    value === AvatarSize.small ||
+    value === AvatarSize.medium
+  ) {
     return "m";
   }
   if (value === AvatarSize.large) {

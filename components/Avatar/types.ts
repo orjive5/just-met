@@ -1,6 +1,7 @@
 import { ImageProps } from "expo-image";
 
 export enum AvatarSize {
+  extraSmall = 50,
   small = 70,
   medium = 100,
   large = 120,

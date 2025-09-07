@@ -5,6 +5,7 @@ type TypographyVariant =
   | "h2"
   | "h3"
   | "l"
+  | "mBold"
   | "m"
   | "s"
   | "xs"

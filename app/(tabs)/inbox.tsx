@@ -70,7 +70,7 @@ const InboxScreen = () => {
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <FlatList
         data={chat}
-        keyExtractor={(i) => i.id}
+        keyExtractor={(index) => index.id}
         ListHeaderComponent={ListHeader}
         contentContainerStyle={{
           paddingHorizontal: 20,
