@@ -14,7 +14,8 @@ import { Colors } from "@/theme/colors";
 import { Typography } from "@/components/Typography/Typography";
 import NumberInput from "@/components/NumberInput";
 import ImageInput from "@/components/ImageInput";
-import { Image } from "expo-image";
+import Avatar from "@/components/Avatar/Avatar";
+import { AvatarSize } from "@/components/Avatar/types";
 
 type TOnboardingFormValues = {
   profileImage: string | null;
@@ -124,18 +125,7 @@ const EditProfileScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.formContainer}>
           {imageSource && (
-            <Image
-              alt="Selected image"
-              source={imageSource}
-              style={{
-                width: 200,
-                height: 200,
-                marginTop: 10,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: `${Colors.brandPrimary}`,
-              }}
-            />
+            <Avatar source={imageSource} size={AvatarSize.extraLarge} />
           )}
 
           <ImageInput

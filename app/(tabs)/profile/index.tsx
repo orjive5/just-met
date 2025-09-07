@@ -2,12 +2,13 @@ import { SignedIn, useClerk } from "@clerk/clerk-expo";
 import { StyleSheet, View } from "react-native";
 import { Typography } from "@/components/Typography/Typography";
 import { useRouter } from "expo-router";
-import { Image } from "expo-image";
 import { Colors } from "@/theme/colors";
 import React from "react";
 import { Button } from "@/components/Button/Button";
 import { ButtonVariant } from "@/components/Button/types";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Avatar from "@/components/Avatar/Avatar";
+import { AvatarSize } from "@/components/Avatar/types";
 
 const ProfileScreen = () => {
   const { user } = useClerk();
@@ -24,18 +25,7 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       <SignedIn>
         {user?.imageUrl && (
-          <Image
-            alt="Selected image"
-            source={user?.imageUrl}
-            style={{
-              width: 200,
-              height: 200,
-              marginTop: 10,
-              borderRadius: 100,
-              borderWidth: 1,
-              borderColor: `${Colors.brandPrimary}`,
-            }}
-          />
+          <Avatar source={user?.imageUrl} size={AvatarSize.extraLarge} />
         )}
         <Typography variant="h2">
           {user?.firstName}, {user?.unsafeMetadata?.age}

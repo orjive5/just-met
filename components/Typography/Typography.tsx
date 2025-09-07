@@ -13,13 +13,13 @@ export const Typography: FC<TypographyProps> = ({
   const colorStyle = color ? { color: Colors[color] } : color;
 
   return (
-    <Text style={[typographyStyles[variant], colorStyle, style]} {...props}>
+    <Text style={[styles[variant], colorStyle, style]} {...props}>
       {children}
     </Text>
   );
 };
 
-const typographyStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   h1: {
     fontSize: 32,
     fontWeight: "bold",

@@ -7,7 +7,7 @@ import {
 
 import { Typography } from "@/components/Typography/Typography";
 import { Colors } from "@/theme/colors";
-import { Image } from "expo-image";
+import Avatar from "@/components/Avatar/Avatar";
 
 type Item = { id: string; label: string };
 
@@ -35,20 +35,11 @@ const InboxScreen = () => {
           contentContainerStyle={styles.horizontalListContent}
           ItemSeparatorComponent={() => <View style={styles.hGap} />}
           renderItem={() => (
-            <View>
-              <Image
-                alt="Connection avatar"
-                source={require("@/assets/images/mockAvatar.jpeg")}
-                style={{
-                  width: 70,
-                  height: 70,
-                  borderRadius: 100,
-                  borderWidth: 2,
-                  borderColor: `${Colors.greenPrimary}`,
-                }}
-              />
-              <Typography variant="m">Jane Doe</Typography>
-            </View>
+            <Avatar
+              source={require("@/assets/images/mockAvatar.jpeg")}
+              title="Jane Doe"
+              type="connection"
+            />
           )}
         />
       </View>
@@ -62,20 +53,11 @@ const InboxScreen = () => {
           contentContainerStyle={styles.horizontalListContent}
           ItemSeparatorComponent={() => <View style={styles.hGap} />}
           renderItem={() => (
-            <View>
-              <Image
-                alt="Crush avatar"
-                source={require("@/assets/images/mockAvatar.jpeg")}
-                style={{
-                  width: 70,
-                  height: 70,
-                  borderRadius: 100,
-                  borderWidth: 2,
-                  borderColor: `${Colors.pinkNeon}`,
-                }}
-              />
-              <Typography variant="m">Jane Doe</Typography>
-            </View>
+            <Avatar
+              source={require("@/assets/images/mockAvatar.jpeg")}
+              title="Jane Doe"
+              type="match"
+            />
           )}
         />
       </View>
@@ -98,18 +80,11 @@ const InboxScreen = () => {
         ItemSeparatorComponent={() => <View style={styles.vGap} />}
         renderItem={() => (
           <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-            <Image
-              alt="Person avatar"
+            <Avatar
               source={require("@/assets/images/mockAvatar.jpeg")}
-              style={{
-                width: 70,
-                height: 70,
-                borderRadius: 100,
-                borderWidth: 2,
-                borderColor: `${Colors.greenPrimary}`,
-              }}
+              title="Jane Doe"
+              horizontal
             />
-            <Typography variant="m">Jane Doe</Typography>
           </View>
         )}
       />
