@@ -20,7 +20,7 @@ export default function SettingsScreen() {
             color={Colors.textPrimary}
           />
         }
-        variant={ButtonVariant.MINIMAL}
+        variant={ButtonVariant.Minimal}
         fullWidth={false}
       />
     </View>

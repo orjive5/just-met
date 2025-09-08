@@ -2,15 +2,15 @@ import { ButtonVariant } from "@/components/Button/types";
 import { Colors } from "@/theme/colors";
 
 export const variantConfig = {
-  [ButtonVariant.OUTLINED]: {
+  [ButtonVariant.Outlined]: {
     textColor: "brandPrimary" as const,
     loaderColor: Colors.brandPrimary,
   },
-  [ButtonVariant.FILLED]: {
+  [ButtonVariant.Filled]: {
     textColor: "textSecondary" as const,
     loaderColor: Colors.textSecondary,
   },
-  [ButtonVariant.MINIMAL]: {
+  [ButtonVariant.Minimal]: {
     textColor: "textPrimary" as const,
     loaderColor: Colors.brandPrimary,
   },

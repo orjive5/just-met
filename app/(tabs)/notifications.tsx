@@ -98,7 +98,7 @@ const NotificationCard = ({ item }: { item: TNotification }) => {
   return (
     <Card border={item.read ? CardBorderStyle.None : CardBorderStyle.Neutral}>
       <View style={styles.row}>
-        <Avatar source={item.avatar} horizontal size={AvatarSize.extraSmall} />
+        <Avatar source={item.avatar} horizontal size={AvatarSize.ExtraSmall} />
         <View style={styles.content}>
           <Typography variant="mBold">{item.heading}</Typography>
           <Typography variant="m">

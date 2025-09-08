@@ -1,16 +1,16 @@
 import { ImageProps } from "expo-image";
 
 export enum AvatarSize {
-  extraSmall = 50,
-  small = 70,
-  medium = 100,
-  large = 120,
-  extraLarge = 150,
+  ExtraSmall = 50,
+  Small = 70,
+  Medium = 100,
+  Large = 120,
+  ExtraLarge = 150,
 }
 
 export enum BorderWidth {
-  thin = 1,
-  thick = 2,
+  Thin = 1,
+  Thick = 2,
 }
 
 export type TAvatarType = "neutral" | "connection" | "match";

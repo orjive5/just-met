@@ -1,10 +1,10 @@
 import { StyleProp, ViewProps, ViewStyle } from "react-native";
 
 export enum CardBorderStyle {
-  Connection = "CONNECTION",
-  Match = "MATCH",
-  Neutral = "NEUTRAL",
-  None = "NONE",
+  Connection = "connection",
+  Match = "match",
+  Neutral = "neutral",
+  None = "none",
 }
 
 export type TCardProps = {

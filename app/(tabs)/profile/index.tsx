@@ -25,7 +25,7 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       <SignedIn>
         {user?.imageUrl && (
-          <Avatar source={user?.imageUrl} size={AvatarSize.extraLarge} />
+          <Avatar source={user?.imageUrl} size={AvatarSize.ExtraLarge} />
         )}
         <Typography variant="h2">
           {user?.firstName}, {user?.unsafeMetadata?.age}
@@ -84,7 +84,7 @@ const ProfileScreen = () => {
             label="Edit Profile"
             onPress={() => router.push("/(tabs)/profile/edit-profile")}
             fullWidth={false}
-            variant={ButtonVariant.MINIMAL}
+            variant={ButtonVariant.Minimal}
             icon={
               <Ionicons
                 name="create-outline"

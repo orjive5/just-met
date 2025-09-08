@@ -21,7 +21,7 @@ export const Button: FC<TProps> = ({
   isLoading = false,
   disabled = false,
   icon,
-  variant = ButtonVariant.OUTLINED,
+  variant = ButtonVariant.Outlined,
   fullWidth = true,
   ...props
 }) => {
@@ -31,7 +31,7 @@ export const Button: FC<TProps> = ({
       style={[
         styles.baseStyle,
         styles[variant],
-        { opacity: variant === ButtonVariant.FILLED && isLoading ? 0.7 : 1 },
+        { opacity: variant === ButtonVariant.Filled && isLoading ? 0.7 : 1 },
         fullWidth && styles.fullWidth,
       ]}
       onPress={onPress}

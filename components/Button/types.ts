@@ -1,5 +1,5 @@
 export enum ButtonVariant {
-  OUTLINED = "outlined",
-  FILLED = "filled",
-  MINIMAL = "minimal",
+  Outlined = "outlined",
+  Filled = "filled",
+  Minimal = "minimal",
 }

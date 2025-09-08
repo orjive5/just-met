@@ -12,10 +12,10 @@ import { getBorderColor, getTitleSize } from "@/components/Avatar/utils";
 const Avatar: React.FC<AvatarProps> = ({
   source,
   title,
-  size = AvatarSize.small,
+  size = AvatarSize.Small,
   type = "neutral",
   horizontal = false,
-  borderWidth = BorderWidth.thick,
+  borderWidth = BorderWidth.Thick,
   ...props
 }) => {
   return (

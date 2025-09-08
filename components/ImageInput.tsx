@@ -65,7 +65,7 @@ const ImageInput = ({
               <Button
                 label={buttonText}
                 onPress={pickImageAsync}
-                variant={ButtonVariant.MINIMAL}
+                variant={ButtonVariant.Minimal}
                 icon={
                   <Ionicons
                     name="image-outline"

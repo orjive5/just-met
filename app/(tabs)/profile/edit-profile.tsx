@@ -125,7 +125,7 @@ const EditProfileScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.formContainer}>
           {imageSource && (
-            <Avatar source={imageSource} size={AvatarSize.extraLarge} />
+            <Avatar source={imageSource} size={AvatarSize.ExtraLarge} />
           )}
 
           <ImageInput

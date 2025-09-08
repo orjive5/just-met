@@ -204,7 +204,7 @@ const Onboarding = () => {
               label="Complete Account"
               onPress={handleSubmit(onSubmit)}
               isLoading={isLoading}
-              variant={ButtonVariant.FILLED}
+              variant={ButtonVariant.Filled}
               disabled={isLoading}
             />
           </View>
